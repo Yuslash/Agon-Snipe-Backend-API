@@ -8,3 +8,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/data
+
+###
+GET http://localhost:3000/info/66feda01bce9ea31ab4699fa
