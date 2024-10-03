@@ -5,3 +5,6 @@ Content-Type: application/json
     "username": "secondtry",
     "password": "krishna"
 }
+
+###
+GET http://localhost:3000/data
