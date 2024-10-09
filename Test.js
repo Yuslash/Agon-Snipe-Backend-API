@@ -1,7 +1,12 @@
-export default function Test(app)
+export default function Test(app, client)
 {
-    app.get('/test', (req, res) =>
+    app.get('/test', async (req, res) =>
     {
-        res.send("IT will work Belive in my Confidence you will read this on the page")
+        const database = client.db('prisma')
+        const collection = database.collection("mainstream")
+
+        const data = await collection.find().toArray()
+        
+        res.status(200).json({data})
     })
 }
