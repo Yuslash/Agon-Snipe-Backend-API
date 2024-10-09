@@ -41,8 +41,8 @@ export default function Upload(app, client) {
                 viewedBy: viewedBy ? viewedBy : []
             }
 
-            await mainCollection.insertOne({ jsonData })
-            await userCollection.insertOne({ jsonData })
+            await mainCollection.insertOne(jsonData)
+            await userCollection.insertOne(jsonData)
 
             res.status(200).json({ message: "User Data Initialized", jsonData })
         } catch (error) {
