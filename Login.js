@@ -17,7 +17,7 @@ export default function Login(app, client, fs, path, fileURLToPath, bcrypt) {
                 res.status(400).json({ message: "Invalid Password" })
             }
         } else {
-            res.status(400).json({message : "User not Found"})
+            res.status(404).json({message : "User not Found"})
         }
     })
 }
