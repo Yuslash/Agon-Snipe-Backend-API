@@ -8,6 +8,7 @@ import GetId from './GetId.js'
 import { ObjectId } from 'mongodb'
 import Signup from './Signup.js'
 import bcrypt from 'bcrypt'
+import cors from 'cors'
 
 
 dotenv.config()
@@ -15,6 +16,7 @@ dotenv.config()
 const uri = process.env.MONGO_URI
 const app = express()
 app.use(express.json())
+app.use(cors())
 const client = new MongoClient(uri)
 
 const database = client.db('agontest')
