@@ -6,6 +6,9 @@ import dotenv from 'dotenv'
 import PostTest from './PostTest.js'
 import GetId from './GetId.js'
 import { ObjectId } from 'mongodb'
+import Signup from './Signup.js'
+import bcrypt from 'bcrypt'
+
 
 dotenv.config()
 
@@ -21,6 +24,7 @@ Test(app)
 Database(client, app)
 PostTest(client, app)
 GetId(app, collection, ObjectId)
+Signup(app, client, bcrypt)
 
 
 app.listen(3000, ()=>

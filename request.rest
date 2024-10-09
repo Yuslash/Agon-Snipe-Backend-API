@@ -11,3 +11,12 @@ GET http://localhost:3000/data
 
 ###
 GET http://localhost:3000/info/66feda01bce9ea31ab4699fa
+
+###
+POST http://localhost:3000/login
+Content-type: application/json
+
+{
+    "username": "testingfornew",
+    "password": "krishna"
+}
