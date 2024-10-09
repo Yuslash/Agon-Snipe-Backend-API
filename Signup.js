@@ -1,6 +1,6 @@
 export default function Signup(app, client, bcrypt) {
 
-    app.post('/login', async (req, res) => {
+    app.post('/signup', async (req, res) => {
         
         const { username, password } = req.body
 
