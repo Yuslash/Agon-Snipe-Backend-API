@@ -3,17 +3,21 @@ export default function Login(app, client, fs, path, fileURLToPath, bcrypt) {
         
         const { username, password } = req.body 
 
-        const database = client.database('prisma')
+        const database = client.db('prisma')
         const collection = database.collection('user')
 
         const user = await collection.findOne({ username })
 
         if(user) {
-            const isMatch = await bcrypt.compare({ password: user.password })
+            const isMatch = await bcrypt.compare(password, user.password )
 
             if(isMatch) {
                 res.status(200).json({ message: 'Login Successfull', })
+            } else {
+                res.status(400).json({ message: "Invalid Password" })
             }
+        } else {
+            res.status(400).json({message : "User not Found"})
         }
     })
 }
