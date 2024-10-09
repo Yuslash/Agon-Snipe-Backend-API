@@ -13,6 +13,7 @@ import Login from './Login.js'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import Upload from './Upload.js'
 
 dotenv.config()
 
@@ -34,6 +35,7 @@ PostTest(client, app)
 GetId(app, collection, ObjectId)
 Signup(app, client, bcrypt)
 Login(app, client, fs, path, fileURLToPath, bcrypt)
+Upload(app, client)
 
 app.listen(3000, ()=>
 {
