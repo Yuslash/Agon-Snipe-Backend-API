@@ -19,7 +19,7 @@ export default function Upload(app, client) {
             const database = client.db('prisma')
             const mainCollection = database.collection("mainstream")
 
-            const { title, description, username, viewedBy, category } = req.body
+            const { title, description, username, game, viewedBy, videoUrl , category } = req.body
 
             const userCollection = database.collection(`${username}`)
 
@@ -36,13 +36,15 @@ export default function Upload(app, client) {
                 description,
                 imageFile,
                 username,
+                game,
+                videoUrl,
                 views: initialViews,
                 category: postCategory,
                 viewedBy: viewedBy ? viewedBy : []
             }
 
-            await mainCollection.insertOne(jsonData)
             await userCollection.insertOne(jsonData)
+            await mainCollection.insertOne(jsonData)
 
             res.status(200).json({ message: "User Data Initialized", jsonData })
         } catch (error) {
