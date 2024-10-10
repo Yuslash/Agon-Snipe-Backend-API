@@ -1,29 +1,14 @@
-import multer from "multer"
-
 export default function Upload(app, client) {
 
-    const storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, 'public/')
-        },
-        filename: function (req, file, cb) {
-            cb(null, `${file.originalname}`)
-        }
-    })
-
-    const upload = multer({ storage: storage })
-
-    app.post('/upload', upload.single("imageFile"), async (req, res) => {
+    app.post('/upload', async (req, res) => {
 
         try {
             const database = client.db('prisma')
             const mainCollection = database.collection("mainstream")
 
-            const { title, description, username, game, viewedBy, videoUrl , category } = req.body
+            const { title, description, username, game, viewedBy, videoUrl, imageFile } = req.body
 
             const userCollection = database.collection(`${username}`)
-
-            const imageFile = req.file ? req.file.filename : null
 
             const id = Date.now()
 
@@ -34,8 +19,8 @@ export default function Upload(app, client) {
                 id,
                 title,
                 description,
-                imageFile,
                 username,
+                imageFile,
                 game,
                 videoUrl,
                 views: initialViews,
@@ -43,8 +28,8 @@ export default function Upload(app, client) {
                 viewedBy: viewedBy ? viewedBy : []
             }
 
-            await userCollection.insertOne(jsonData)
             await mainCollection.insertOne(jsonData)
+            await userCollection.insertOne(jsonData)
 
             res.status(200).json({ message: "User Data Initialized", jsonData })
         } catch (error) {
