@@ -17,6 +17,7 @@ import Upload from './Upload.js'
 import ProfileData from './ProfileData.js'
 import MainStreamData from './MainStreamData.js'
 import DeleteVideo from './DeleteVideo.js'
+import UpdateViews from './UpdateViews.js'
 
 dotenv.config()
 
@@ -42,6 +43,7 @@ Upload(app, client)
 ProfileData(app, client)
 MainStreamData(app,client)
 DeleteVideo(app, client)
+UpdateViews(app, client)
 
 app.listen(3000, ()=>
 {
