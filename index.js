@@ -16,6 +16,7 @@ import { fileURLToPath } from 'url'
 import Upload from './Upload.js'
 import ProfileData from './ProfileData.js'
 import MainStreamData from './MainStreamData.js'
+import DeleteVideo from './DeleteVideo.js'
 
 dotenv.config()
 
@@ -40,6 +41,7 @@ Login(app, client, fs, path, fileURLToPath, bcrypt)
 Upload(app, client)
 ProfileData(app, client)
 MainStreamData(app,client)
+DeleteVideo(app, client)
 
 app.listen(3000, ()=>
 {

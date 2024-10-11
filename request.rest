@@ -32,3 +32,14 @@ Content-Type: application/json
     "username": "sibikrsishna",
     "password": "krishna"
 }
+
+###
+GET http://localhost:3000/mainstreamdata
+
+###
+DELETE http://localhost:3000/view/1727776303431
+Content-Type: application/json
+
+{
+  "username": "sibikrishna"
+}
