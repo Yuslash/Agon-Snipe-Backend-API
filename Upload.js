@@ -33,7 +33,7 @@ export default function Upload(app, client) {
 
             res.status(200).json({ message: "User Data Initialized", jsonData })
         } catch (error) {
-            res.status(500).json({ message: "Error uploading data", error });
+            res.status(500).json({ message: "Error uploading data", error })
         }
 
     })
